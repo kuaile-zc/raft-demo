@@ -1,0 +1,15 @@
+# out
+/bin/
+out/
+.*
+/target/
+
+# idea
+functional-tests/build/
+!.gitignore
+*.iml
+*.ipr
+*.iws
+
+# log
+/logs/
