@@ -7,10 +7,10 @@ Realization process
 ===============
 Table
 ----
-Tag | Function | Describe | time | remark
--------- |----------- | -------- | -------- | --------
-v0.1 | 1.Service communication<br>2.Read application.yml | The initial definition uses port 9110 for RAFT protocol communication | undetermined |
- |  |  | | 
+Tag | Function | Describe  | remark
+-------- |--------------------------- | -------- | --------
+v0.1 | 1.Service communication <br> 2.Read application.yml | The initial definition uses port 9110 for RAFT protocol communication | 
+ |  |  | 
 
 Prerequisites
 ===============
