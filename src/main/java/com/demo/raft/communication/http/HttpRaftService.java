@@ -6,9 +6,11 @@ import com.demo.raft.communication.http.model.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author CoreyChen Zhang
@@ -47,12 +49,15 @@ public class HttpRaftService {
                 // create Request object and parse
                 Request request = new Request(input);
                 request.parse();
-                System.out.println(request.toString());
 
                 // create Response object
                 Response response = new Response(output);
                 response.setRequest(request);
 
+                System.out.println("\r\nRequest body is :" + request.getBody());
+
+                response.sendStaticResource();
+                
                 // Close the socket
                 socket.close();
                 //check if the previous URI is a shutdown command

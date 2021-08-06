@@ -1,5 +1,7 @@
 package com.demo.raft.communication.http.model;
 
+import lombok.Data;
+
 import javax.servlet.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,10 +16,12 @@ import java.util.Map;
  * @date 2021/7/30 17:23
  * @modified
  */
+@Data
 public class Request implements ServletRequest {
 
     private InputStream input;
     private String uri;
+    private String body;
 
     public Request(InputStream input) {
         this.input = input;
@@ -54,6 +58,7 @@ public class Request implements ServletRequest {
             request.append((char) buffer[j]);
         }
         System.out.print(request.toString());
+        this.body = request.substring(request.lastIndexOf("\r\n" )+ 2);
         uri = parseUri(request.toString());
     }
 
