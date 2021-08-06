@@ -25,14 +25,13 @@ public class LoadConfig {
     final private static String RAFT_NODE_STR = "raft.node=";
 
 
-    public String getConfigFromResources() {
+    public void getConfigFromResources() {
         File configFile = new File(APPLICATION_CONFIG);
         if (!configFile.exists()) {
             System.out.println("The config file read fail!");
         }
         String configStr = readConfigFile(configFile);
-        List<String> nodes = parseIp(configStr);
-        return "";
+        System.setProperty(CommonConstant.IP_NODE_STR, parseIp(configStr));
     }
 
     private String readConfigFile(File file) {
@@ -53,14 +52,13 @@ public class LoadConfig {
         return stringBuilder.toString();
     }
 
-    private List<String> parseIp(String str) {
-        List<String> result = new ArrayList<>();
+    private String parseIp(String str) {
         if (str == null){
-            return result;
+            return "";
         }
         int beginIndex = str.indexOf(RAFT_NODE_STR) + RAFT_NODE_STR.length();
         int endIndex = str.indexOf(CommonConstant.SEMICOLON);
-        return Arrays.stream(str.substring(beginIndex, endIndex).split(CommonConstant.COMMA)).collect(Collectors.toList());
+        return str.substring(beginIndex, endIndex);
     }
 
 }

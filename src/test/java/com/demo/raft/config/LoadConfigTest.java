@@ -1,5 +1,6 @@
 package com.demo.raft.config;
 
+import com.demo.raft.constant.CommonConstant;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class LoadConfigTest {
 
     @Test
     public void getConfig() {
-        String configFromResources = loadConfig.getConfigFromResources();
-        Assert.assertNotNull(configFromResources);
+        loadConfig.getConfigFromResources();
+        Assert.assertNotNull(System.getProperty(CommonConstant.IP_NODE_STR));
     }
 }
